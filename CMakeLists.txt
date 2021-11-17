@@ -9,7 +9,7 @@ add_library(hnswlib INTERFACE)
 add_library(hnswlib::hnswlib ALIAS hnswlib)
 target_compile_features(hnswlib INTERFACE cxx_std_11)
 target_include_directories(hnswlib INTERFACE
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/hnswlib>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
     $<INSTALL_INTERFACE:include>
 ) 
 
@@ -30,7 +30,7 @@ if (HNSWLIB_INSTALL)
             NAMESPACE   ${PROJECT_NAME}::
             DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME}/cmake)
 
-    install(DIRECTORY   ${PROJECT_SOURCE_DIR}/hnswlib
+    install(DIRECTORY   ${PROJECT_SOURCE_DIR}/include/hnswlib
             DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
     # create version file
@@ -41,7 +41,7 @@ if (HNSWLIB_INSTALL)
 
     # create config file
     configure_package_config_file(
-        "${PROJECT_SOURCE_DIR}/${PROJECT_NAME}Config.cmake.in"
+        "${PROJECT_SOURCE_DIR}/cmake/${PROJECT_NAME}Config.cmake.in"
         "${PROJECT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
         INSTALL_DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME}/cmake)
 
@@ -57,7 +57,7 @@ if (JUST_INSTALL_HNSWLIB)
 endif()
 
 if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
-    set(CMAKE_CXX_STANDARD 11)
+    # set(CMAKE_CXX_STANDARD 11)
 
     if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
       SET( CMAKE_CXX_FLAGS  "-Ofast -DNDEBUG -std=c++11 -DHAVE_CXX0X -openmp -march=native -fpic -ftree-vectorize")
