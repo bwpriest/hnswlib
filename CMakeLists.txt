@@ -10,7 +10,7 @@ add_library(hnswlib::hnswlib ALIAS hnswlib)
 target_compile_features(hnswlib INTERFACE cxx_std_11)
 target_include_directories(hnswlib INTERFACE
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/hnswlib>
-    $<INSTALL_INTERFACE:hnswlib>
+    $<INSTALL_INTERFACE:include>
 ) 
 
 if (HNSWLIB_INSTALL)
