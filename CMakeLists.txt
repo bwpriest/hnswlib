@@ -31,7 +31,7 @@ if (HNSWLIB_INSTALL)
             DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME}/cmake)
 
     install(DIRECTORY   ${PROJECT_SOURCE_DIR}/hnswlib
-            DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/hnswlib)
+            DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
     # create version file
     write_basic_package_version_file(
